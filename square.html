@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Square</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.2.0/umd/react.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.2.0/umd/react-dom.development.js"></script>
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        const square = React.createElement('div', {
+            style: {
+                width: '100px',
+                height: '100px',
+                backgroundColor: '#090',
+                margin: '10px'
+            }
+        });
+
+        const container = React.createElement('div', {
+            style: { border: '1px solid #f00'}},
+            square,
+            square
+        );
+
+        ReactDOM.render(container, document.getElementById('app'));
+    </script>
+</body>
+</html>

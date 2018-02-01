@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Working with list</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.2.0/umd/react.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.2.0/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
+    <style>
+        .list {
+            max-width: 50%;
+            margin: 0 auto;
+        }
+        .item {
+            margin: 10px;
+            border: 1px solid #cccccc;
+            display: flex;
+        }
+        .item .avatar{
+            border-right: 1px solid #cccccc;
+            flex: 0 0px;
+            padding: 10px;
+        }
+
+        .item .data {
+            flex: 2;
+            padding:10px;
+        }
+
+        .avatar img {
+            max-width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const rootElement = document.getElementById('root');
+        const frameworkList = [
+            {name: 'React', stars: 87384, avatar: 'https://cdn.worldvectorlogo.com/logos/angular-icon.svg'},
+            {name: 'Angular',stars : 82312, avatar: 'http://bit.ly/2BZ6eLA'},
+            {name: 'Vue', stars: 32630, avatar: 'https://seanwash.gallerycdn.vsassets.io/extensions/seanwash/vue/0.4.2/1477316718597/Microsoft.VisualStudio.Services.Icons.Default'}
+        ];
+
+        const Name = (props) => <div>Name: {props.name}</div>;
+        const Avatar = (props) => <img src={props.avatar}/>;
+        const Stars = (props) => <div>Stars: {props.stars}</div>;
+
+        const Framework = (props) => (
+            <div className="item">
+                <div className="avatar">
+                    <Avatar avatar={props.framework.avatar}/>
+                </div>
+                <div className="data">
+                    <Name name={props.framework.name}/>
+                    <Stars stars={props.framework.stars}/>
+                </div>
+            </div>
+        );
+
+        const Frameworks = props => (
+            <div className="list">
+                {props.frameworkList.map((item, index) => <Framework framework={item} key={index}/>)}
+            </div>
+        );
+
+        ReactDOM.render(<Frameworks frameworkList={frameworkList}/>, rootElement);
+    </script>
+</body>
+</html>
